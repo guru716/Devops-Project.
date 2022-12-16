@@ -7,12 +7,15 @@
 # Step1: First we need to launch an EC2 instance with Keypair
 
 * Named as master
+
 <img width="294" alt="image" src="https://user-images.githubusercontent.com/111115490/207784582-403e0906-598b-499b-ae41-a683056d2fed.png">
 
 * Select AMI as Ubuntu 20.04 and Instance Type as t2.medium
+
 <img width="460" alt="image" src="https://user-images.githubusercontent.com/111115490/207785060-ca68a9c1-a811-41d0-a95f-61442ced0f97.png">
 
 * We neet to lanch another 2 EC2 Instance with Keypair
+
 * named ad Test(slave01) and Prod(slave02) with same configuration. 
 
 <img width="512" alt="image" src="https://user-images.githubusercontent.com/111115490/207786279-e5721ce7-95ae-4fa8-84b2-1e43ede4905a.png">
@@ -20,7 +23,9 @@
 # First we Login Master Node using PUTTY.
 
 * Once our server is running, connect to your server via SSH by using your keypair.
+
 # we need to update machine using:
+
 sudo apt-get update
 
 <img width="679" alt="image" src="https://user-images.githubusercontent.com/111115490/207787953-baa120a5-0f65-4f26-8955-05f64b3f94ac.png">
@@ -227,6 +232,7 @@ Private IP of You test node (slave01)
 
 * Test Node will be successfully added and its running
 
+
 <img width="593" alt="image" src="https://user-images.githubusercontent.com/111115490/207822629-4bb697a5-15f4-4657-8f37-42ec3de731f6.png">
 
 
@@ -383,6 +389,50 @@ sudo docker rm -f $(sudo docker ps -a -q)
 # Now Put In Production Environment:
 
 * Create a new Job -> Job3
+* Description -> Putting the Web App In Production Environment
+
+<img width="602" alt="image" src="https://user-images.githubusercontent.com/111115490/208035634-186c68e5-0ec9-4e9d-8a01-788b63cfbdea.png">
+
+* then Restrict this project can be run (selected)
+
+* Lable Expression Run In Production
+
+<img width="547" alt="image" src="https://user-images.githubusercontent.com/111115490/208036365-28ae350a-eee7-49c3-ad77-01a441f847c0.png">
+
+* Source code Management Should be In Git ( paste the Master Branch Github URL)
+
+* Now In Build Execute Command for Dockerfile:
+
+sudo docker build -t finalrelease 
+
+sudo docker run -itd -p 80:80 finalrelease
+
+<img width="453" alt="image" src="https://user-images.githubusercontent.com/111115490/208039126-537207cd-d1e0-453a-bd87-63ac8dfa608f.png">
+
+
+# At the same Time Go Inside Job2 -> Choose Post-Build Actions -> Build Other Project Choose as Job3 -> Select trigger only if build is stable 
+
+<img width="536" alt="image" src="https://user-images.githubusercontent.com/111115490/208037678-40c01197-aa62-4740-bde1-d92f473e18f7.png">
+
+* Now Job2 will trigger Automatically Job3 will be start Running
+
+
+<img width="632" alt="image" src="https://user-images.githubusercontent.com/111115490/208039823-3d21caef-09f9-4a64-bbea-4f79ea615c5e.png">
+
+
+* Job3 it Has be Successfully Run, Next Copy the Production (slave3) instance Public IP address and Paste It in Google. It Automatically take Port 80
+
+
+<img width="437" alt="image" src="https://user-images.githubusercontent.com/111115490/208039597-2eac50ce-6b36-4fac-901f-511221f65c4f.png">
+
+
+# Finally Server is Running Successfully
+
+
+<img width="470" alt="image" src="https://user-images.githubusercontent.com/111115490/208040763-a4d67d17-9782-4f4f-91eb-449d24bef47c.png">
+
+
+  
 
 
 
