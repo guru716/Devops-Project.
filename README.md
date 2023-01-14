@@ -6,7 +6,7 @@
 
 # Step1: First we need to launch an EC2 instance with Keypair
 
-* Named as master
+* Need to create EC2 Instance Named as master
 
 <img width="294" alt="image" src="https://user-images.githubusercontent.com/111115490/207784582-403e0906-598b-499b-ae41-a683056d2fed.png">
 
@@ -14,7 +14,7 @@
 
 <img width="460" alt="image" src="https://user-images.githubusercontent.com/111115490/207785060-ca68a9c1-a811-41d0-a95f-61442ced0f97.png">
 
-* We neet to lanch another 2 EC2 Instance with Keypair
+* We need to lanch another 2 EC2 Instance with Keypair
 
 * named ad Test(slave01) and Prod(slave02) with same configuration. 
 
@@ -426,7 +426,7 @@ sudo docker run -itd -p 80:80 finalrelease
 <img width="437" alt="image" src="https://user-images.githubusercontent.com/111115490/208039597-2eac50ce-6b36-4fac-901f-511221f65c4f.png">
 
 
-# Finally Server is Running Successfully
+# Finally Server is up and Running Successfully
 
 
 <img width="470" alt="image" src="https://user-images.githubusercontent.com/111115490/208040763-a4d67d17-9782-4f4f-91eb-449d24bef47c.png">
